@@ -21,7 +21,9 @@
 
 	<!--<dubbo:reference interface="com.keymao.content.service.ContentService" id="contentService"/>-->
 
-
+	<mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
+	<mvc:resources mapping="/images/**" location="/images/"></mvc:resources>
+	<mvc:resources mapping="/js/**" location="/js/"></mvc:resources>
 
 	<context:component-scan base-package="com.keymao.sso.controller" />
 
