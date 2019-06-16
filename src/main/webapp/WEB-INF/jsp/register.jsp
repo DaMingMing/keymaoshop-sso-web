@@ -142,6 +142,7 @@
 		beforeSubmit:function() {
 				//检查用户是否已经被占用
 				$.ajax({
+                    //加随机数原因：浏览器会缓存同样的请求，如果校验失败，继续发请求，不会到服务端，所以加了随机数，保证每次请求都不一样
 	            	url : REGISTER.param.surl + "/user/check/"+escape($("#regName").val())+"/1?r=" + Math.random(),
 	            	success : function(data) {
 	            		if (data.data) {
