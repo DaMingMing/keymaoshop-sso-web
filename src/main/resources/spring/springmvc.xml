@@ -21,6 +21,7 @@
 
 	<dubbo:reference interface="com.keymaoshop.sso.service.RegisterService" id="registerService"/>
 	<dubbo:reference interface="com.keymaoshop.sso.service.LoginService" id="loginService"/>
+	<dubbo:reference interface="com.keymaoshop.sso.service.TokenService" id="tokenService"/>
 
 	<mvc:resources mapping="/css/**" location="/css/"></mvc:resources>
 	<mvc:resources mapping="/images/**" location="/images/"></mvc:resources>
