@@ -41,4 +41,21 @@ public class LoginController {
 
     }
 
+    @RequestMapping(value="/user/logout")
+    public String logout(String token, HttpServletRequest request, HttpServletResponse response) {
+        //E3Result e3Result = new E3Result(token);
+        System.out.println(token);
+/*        //判断是否登录成功
+        if(e3Result.getStatus() == 200) {
+            String token = e3Result.getData().toString();
+            //如果登录成功需要把token写入cookie
+            CookieUtils.setCookie(request, response, TOKEN_KEY, token);
+        }*/
+        //返回结果
+
+        //删除Redis对应的数据
+        return "login";
+
+    }
+
 }
