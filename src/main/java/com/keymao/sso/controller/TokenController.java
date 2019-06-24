@@ -23,15 +23,15 @@ public class TokenController {
 	@Autowired
 	private TokenService tokenService;
 	//produces=MediaType.APPLICATION_JSON_UTF8_VALUE + "application/json;charset=utf-8" 解决控制器响应乱码问题
-	@RequestMapping(value="/user/token/{token}",produces=MediaType.APPLICATION_JSON_UTF8_VALUE + "application/json;charset=utf-8")
+	@RequestMapping(value="/user/token/{token}",produces=MediaType.APPLICATION_JSON_UTF8_VALUE /*"application/json;charset=utf-8"*/)
 	@ResponseBody
-	public String getUserByToken(@PathVariable String token) {
+	public String getUserByToken(@PathVariable String token, String callback) {
 		E3Result result = tokenService.getUserByToken(token);
-/*		//响应结果之前，判断是否为jsonp请求
+		//响应结果之前，判断是否为jsonp请求
 		if (StringUtils.isNotBlank(callback)) {
 			//把结果封装成一个js语句响应
 			return callback + "(" + JsonUtils.objectToJson(result)  + ");";
-		}*/
+		}
 		return JsonUtils.objectToJson(result);
 	}
 /*	@RequestMapping(value="/user/token/{token}")
