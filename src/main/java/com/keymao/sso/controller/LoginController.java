@@ -3,6 +3,7 @@ package com.keymao.sso.controller;
 import com.keymao.common.utils.CookieUtils;
 import com.keymao.common.utils.E3Result;
 import com.keymaoshop.sso.service.LoginService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -42,17 +43,13 @@ public class LoginController {
     }
 
     @RequestMapping(value="/user/logout")
-    public String logout(String token, HttpServletRequest request, HttpServletResponse response) {
+    public String logout(String token) {
         //E3Result e3Result = new E3Result(token);
-        System.out.println(token);
-/*        //判断是否登录成功
-        if(e3Result.getStatus() == 200) {
-            String token = e3Result.getData().toString();
-            //如果登录成功需要把token写入cookie
-            CookieUtils.setCookie(request, response, TOKEN_KEY, token);
-        }*/
+        //System.out.println(token);
         //返回结果
-
+        if (!StringUtils.isBlank(token)) {
+            loginService.userLogout(token);
+        }
         //删除Redis对应的数据
         return "login";
 
