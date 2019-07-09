@@ -7,9 +7,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.awt.ModalExclude;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +22,9 @@ public class LoginController {
     private LoginService loginService;
 
     @RequestMapping("/page/login")
-    public  String showLogin(){
+    public  String showLogin(String redirect, Model model){
+        //传递参数给js处理，跳转回原来操作页面
+        model.addAttribute("redirect",redirect);
         return "login";
     }
 
